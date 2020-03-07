@@ -18,7 +18,10 @@ try {
     die;
 }
 
-$data = $pdo->query("SELECT * FROM burgers.users where Email='" . $email . "'")->fetch();
+$query = $pdo->prepare("SELECT * FROM burgers.users where `Email`=:email");
+
+$query->execute(['email'=> $email]);
+$data = $query-> fetch();
 $userId = null;
 
 if ($data) {
@@ -29,9 +32,12 @@ if ($data) {
     addOrder($userId, $pdo, $address, $comment, $email);
 } else {
     // если пользователя нет, создаем его
-    $pdo->query("insert into burgers.users (Email, Phone, Name) values('" . $email . "','" . $phone . "','" . $name . "')");
+    $query = $pdo->prepare ("insert into burgers.users (Email, Phone, Name) values(:email, :phone, :name)");
+    $query -> execute(['email'=> $email, 'phone'=> $phone , 'name'=> $name]);
+
     $res = $pdo->query('select last_insert_id() as id')->fetch();
     $userId = $res['id'];
+    echo 'Created USer ID '.$userId;
     $address = $street . ' ' . $home . ' ' . $part . ' ' . $floor . ' ' . $flat;
     addOrder($userId, $pdo, $address, $comment, $email);
 }
@@ -41,11 +47,17 @@ function addOrder($userId, $pdo, $address, $comment, $email)
 {
     if ($userId) {
         // добавляем инфу о заказе
-        $pdo->query("insert into burgers.orders(USER_ID, ADDRESS, COMMENT) values (" . $userId . ",'" . $address . "','" . $comment . "')");
+        $query = $pdo->prepare("insert into burgers.orders(USER_ID, ADDRESS, COMMENT) values (:userId, :address, :comment)");
+        $query-> execute(['userId'=> $userId, 'address'=> $address, 'comment'=> $comment]);
+
+
         $res = $pdo->query('select last_insert_id() as id')->fetch();
         $orderId = $res['id'];
 
-        $res = $pdo->query('select  count(*) as res from burgers.orders where USER_ID =' . $userId)->fetch();
+        $query = $pdo->prepare('select  count(*) as res from burgers.orders where USER_ID =:userId');
+        $query-> execute(['userId'=> $userId]);
+        $res = $query-> fetch();
+
         $count = $res['res'];
         sendMail($email, $orderId, $address, $count);
     }
