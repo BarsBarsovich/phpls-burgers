@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Главная страница
     </title>
-    <link rel="stylesheet" href="./css/vendors.min.css">
-    <link rel="stylesheet" href="../css/main.min.css">
+    <link rel="stylesheet" href="./views/templates/css/main.min.css">
+    <link rel="stylesheet" href="./views/templates/css/main.min.css">
 </head>
 <body>
 <div class="wrapper">
@@ -15,8 +15,8 @@
         <section class="section hero">
             <div class="container">
                 <header class="header">
-                    <div class="header__logo"><a class="logo" href="#"><img class="logo__icon"
-                                                                            src="./img/icons/logo.svg"></a></div>
+                    <div class="header__logo"><a class="logo" href="#">
+                        <img class="logo__icon"  src="./img/icons/logo.svg"></a></div>
                     <div class="header__menu">
                         <nav class="nav">
                             <ul class="nav__list">
@@ -43,7 +43,7 @@
                 </header>
                 <div class="hero__container">
                     <div class="hero__content">
-                        <div class="hero__left"><img class="hero__img" src="../img/content/burger.png" alt=""></div>
+                        <div class="hero__left"><img class="hero__img" src="./img/content/burger.png" alt=""></div>
                         <div class="hero__right">
                             <div class="section__title">Мы делаем</div>
                             <div class="hero__desc">Натуральные бургеры</div>
@@ -121,8 +121,9 @@
                                 </div>
                                 <div class="burger-weight__title">ккал</div>
                             </div>
-                            <div class="burgers-slider__left"><img class="burgers-slider__pic"
-                                                                   src="../img/content/burgers/1.png" alt=""></div>
+                            <div class="burgers-slider__left">
+                                <img class="burgers-slider__pic"
+                                                                   src="./img/content/burgers/1.png" alt=""></div>
                             <div class="burgers-slider__right">
                                 <div class="section__title section__title_white">Dark Beef Burger</div>
                                 <div class="burgers-slider__text text-block">
@@ -147,7 +148,7 @@
                                 <div class="burger-weight__title">ккал</div>
                             </div>
                             <div class="burgers-slider__left"><img class="burgers-slider__pic"
-                                                                   src="../img/content/burgers/2.png" alt=""></div>
+                                                                   src="./img/content/burgers/2.png" alt=""></div>
                             <div class="burgers-slider__right">
                                 <div class="section__title section__title_white">Dark Beef Burger</div>
                                 <div class="burgers-slider__text text-block">
@@ -172,7 +173,7 @@
                                 <div class="burger-weight__title">ккал</div>
                             </div>
                             <div class="burgers-slider__left"><img class="burgers-slider__pic"
-                                                                   src="../img/content/burgers/3.png" alt=""></div>
+                                                                   src="./img/content/burgers/3.png" alt=""></div>
                             <div class="burgers-slider__right">
                                 <div class="section__title section__title_white">Dark Beef Burger</div>
                                 <div class="burgers-slider__text text-block">
@@ -197,7 +198,7 @@
                                 <div class="burger-weight__title">ккал</div>
                             </div>
                             <div class="burgers-slider__left"><img class="burgers-slider__pic"
-                                                                   src="../img/content/burgers/4.png" alt=""></div>
+                                                                   src="./img/content/burgers/4.png" alt=""></div>
                             <div class="burgers-slider__right">
                                 <div class="section__title section__title_white">Dark Beef Burger</div>
                                 <div class="burgers-slider__text text-block">
@@ -457,7 +458,7 @@
             <div class="container">
                 <div class="section__title">Закажите доставку</div>
                 <div class="order__form">
-                    <form class="order__form-tag" id="order-form" method="post">
+                    <form class="order__form-tag" id="order-form" method="post" action="/index/order">
                         <div class="order__form-col">
                             <div class="order__form-row order__form-row_double">
                                 <label class="order__form-block">
@@ -633,7 +634,5 @@
 <script src="./js/vendors.min.js"></script>
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script src="./js/main.min.js"></script>
-<script src="./js/order.js"></script>
-
 </body>
 </html>
