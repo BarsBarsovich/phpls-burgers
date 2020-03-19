@@ -96,7 +96,7 @@ class Order
         require_once './vendor/autoload.php';
 
 
-        $transport = (new Swift_SmtpTransport('smtp.mail.ru', 25))
+        $transport = (new Swift_SmtpTransport('smtp.mail.ru', 465, 'SSL'))
             ->setUsername('bars.bars.2021')
             ->setPassword('uPiUODa&u2t2');
 
@@ -105,7 +105,7 @@ class Order
 
         // Create a message
         $message = (new Swift_Message($subject))
-            ->setFrom(['bars.bars.2021@mail.ru' => 'bars.bars.2021@mail.ru'])
+            ->setFrom(['bars.bars.2021@mail.ru'])
             ->setTo(['bars.bars.2021@mail.ru' => $this->name])
             ->setBody($message);
 
