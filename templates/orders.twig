@@ -1,0 +1,19 @@
+{% extends "main.twig" %}
+{% block content %}
+    {{ parent() }}
+    <h2>Все Заказы</h2>
+    <table border="1px solid">
+        <tr><td><b>Имя</b></td><td><b>Адрес</b></td><td><b>Комментарий</b></td></tr>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.attributes['id'] }}</td>
+                <td>{{ order.attributes['address'] }}</td>
+                <td>{{ order.attributes['comment'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    наши скрипты #}
+{% endblock %}

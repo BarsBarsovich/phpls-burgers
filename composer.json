@@ -1,0 +1,13 @@
+{
+  "require": {
+    "swiftmailer/swiftmailer": "^6.0",
+    "twig/twig": "^2.5",
+    "illuminate/database": "^7.1",
+    "fzaninotto/faker": "^1.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "models\\": "models/"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{% extends "main.twig" %}
+{% block content %}
+    {{ parent() }}
+    <h2>Все клиенты</h2>
+    <table border="1px solid red">
+        <tr><td><b>Имя</b></td><td><b>Email</b></td><td><b>Телефон</b></td></tr>
+        {% for client in users %}
+            <tr>
+                <td>{{ client.attributes['name'] }}</td>
+                <td>{{ client.attributes['email'] }}</td>
+                <td>{{ client.attributes['phone'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    наши скрипты #}
+{% endblock %}
