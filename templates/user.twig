@@ -1,0 +1,58 @@
+{% extends "main.twig" %}
+{% block content %}
+    {{ parent() }}
+    <h2>Все Заказы</h2>
+    {% if mode %}
+        <form method="get" action="/php/editUser.php">
+            <div>
+                <label>
+                    <span> Имя</span>
+                    <input type="text" value="{{ name }}" name="name">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span> Email</span>
+                    <input type="text" value="{{ email }}" name="email">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span> Phone</span>
+                    <input type="text" value="{{ phone }}" name="phone">
+                </label>
+            </div>
+            <input type="hidden" name="mode" value="saveAfterEdit">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit">Сохранить</button>
+        </form>
+    {% else %}
+        <form method="get" action="/php/editUser.php?mode=saveNewUser">
+            <div>
+                <label>
+                    <span> Имя</span>
+                    <input type="text" name="name">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span> Email</span>
+                    <input type="text" name="email">
+                </label>
+            </div>
+            <div>
+                <label>
+                    <span> Phone</span>
+                    <input type="text" name="phone">
+                </label>
+            </div>
+            <input type="hidden" name="mode" value="saveNewUser">
+            <button type="submit">Сохранить</button>
+        </form>
+    {% endif %}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {#    наши скрипты #}
+{% endblock %}

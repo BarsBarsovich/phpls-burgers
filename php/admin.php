@@ -1,6 +1,6 @@
 <?php
 
-use models\{Orders, Clients};
+use models\{Clients, Orders};
 
 require_once '../php/init.php';
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
@@ -31,3 +31,4 @@ try {
     echo $e->getMessage();
     die;
 }
+

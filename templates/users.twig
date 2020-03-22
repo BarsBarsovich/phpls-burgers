@@ -3,15 +3,27 @@
     {{ parent() }}
     <h2>Все клиенты</h2>
     <table border="1px solid red">
-        <tr><td><b>Имя</b></td><td><b>Email</b></td><td><b>Телефон</b></td></tr>
+        <tr>
+            <td><b>Имя</b></td>
+            <td><b>Email</b></td>
+            <td><b>Телефон</b></td>
+            <td></td>
+        </tr>
         {% for client in users %}
             <tr>
                 <td>{{ client.attributes['name'] }}</td>
                 <td>{{ client.attributes['email'] }}</td>
                 <td>{{ client.attributes['phone'] }}</td>
+                <td>
+                    <a href="/php/removeUser.php?id={{ client.attributes['id'] }}"> Удалить</a>
+                    <a
+                            href="/php/editUser.php?id={{ client.attributes['id'] }}&name={{ client.attributes['name'] }}&email={{ client.attributes['email'] }}&phone={{ client.attributes['phone'] }}&mode=edit"
+                    > Редактировать</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
+    <a href="/php/editUser.php">Добавить</a>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
